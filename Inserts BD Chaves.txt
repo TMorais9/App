@@ -1,0 +1,123 @@
+
+insert into position (pos_name) values ('PL');        #pla_id = 1
+insert into position (pos_name) values ('EE');        #pla_id = 2
+insert into position (pos_name) values ('ED');        #pla_id = 3
+insert into position (pos_name) values ('MC');        #pla_id = 4
+insert into position (pos_name) values ('MD');        #pla_id = 5
+insert into position (pos_name) values ('ME');        #pla_id = 6
+insert into position (pos_name) values ('DD');        #pla_id = 7
+insert into position (pos_name) values ('DE');        #pla_id = 8
+insert into position (pos_name) values ('DC');        #pla_id = 9
+insert into position (pos_name) values ('GR');        #pla_id = 10
+
+
+insert into player (pla_name,pla_bdate) values ('Josimar Dias' ,str_to_date('03.06.1986', '%d.%m.%Y'));           #pla_id = 1
+insert into player (pla_name,pla_bdate) values ('Rodrigo Moura' ,str_to_date('25.01.1996', '%d.%m.%Y'));          #pla_id = 2
+insert into player (pla_name,pla_bdate) values ('Carraca' ,str_to_date('01.03.1993', '%d.%m.%Y'));                #pla_id = 3
+insert into player (pla_name,pla_bdate) values ('Bruno Rodrigues' ,str_to_date('08.08.2001', '%d.%m.%Y'));        #pla_id = 4
+insert into player (pla_name,pla_bdate) values ('Junior Pios' ,str_to_date('20.12.1995', '%d.%m.%Y'));            #pla_id = 5
+insert into player (pla_name,pla_bdate) values ('Kiko Pereira' ,str_to_date('08.09.1999', '%d.%m.%Y'));           #pla_id = 6
+insert into player (pla_name,pla_bdate) values ('Paul Ayongo' ,str_to_date('16.11.1996', '%d.%m.%Y'));            #pla_id = 7
+insert into player (pla_name,pla_bdate) values ('Andre Ricardo' ,str_to_date('23.08.2000', '%d.%m.%Y'));          #pla_id = 8
+insert into player (pla_name,pla_bdate) values ('Andre Gomes' ,str_to_date('20.10.2004', '%d.%m.%Y'));            #pla_id = 9
+insert into player (pla_name,pla_bdate) values ('Diogo Spencer' ,str_to_date('17.04.2004', '%d.%m.%Y'));          #pla_id = 10
+insert into player (pla_name,pla_bdate) values ('Gustavo Varela' ,str_to_date('30.01.2005', '%d.%m.%Y'))          #pla_id = 11
+
+
+insert into season (seas_name, seas_dt_in, seas_dt_out) values ('2024/25', str_to_date('10.08.2024', '%d.%m.%Y'), str_to_date('17.05.2025', '%d.%m.%Y'));        #seas_id = 1
+insert into season (seas_name, seas_dt_in, seas_dt_out) values ('2023/24', str_to_date('13.08.2023', '%d.%m.%Y'), str_to_date('19.05.2024', '%d.%m.%Y'));        #seas_id = 2
+
+
+insert into team (tea_pla_id,tea_seas_id) values(1,1);        #tea_id = 1
+insert into team (tea_pla_id,tea_seas_id) values(2,1);        #tea_id = 2 
+insert into team (tea_pla_id,tea_seas_id) values(3,1);        #tea_id = 3 
+insert into team (tea_pla_id,tea_seas_id) values(4,1);        #tea_id = 4 
+insert into team (tea_pla_id,tea_seas_id) values(5,1);        #tea_id = 5 
+insert into team (tea_pla_id,tea_seas_id) values(6,1);        #tea_id = 6 
+insert into team (tea_pla_id,tea_seas_id) values(7,1);        #tea_id = 7 
+insert into team (tea_pla_id,tea_seas_id) values(8,1);        #tea_id = 8
+
+
+insert into opponent (opp_name) values ('Benfica B');                #opp_id = 1
+insert into opponent (opp_name) values ('Academico Viseu');          #opp_id = 2
+insert into opponent (opp_name) values ('Torreense');                #opp_id = 3
+
+
+insert into game (game_name, game_dt) values('Vizela VS Chaves', STR_TO_DATE('08.11.2024', '%d.%m.%Y'));                   #game_id = 1
+insert into game (game_name, game_dt) values('Oliveirense VS Chaves', STR_TO_DATE('26.10.2024', '%d.%m.%Y'));              #game_id = 2 
+insert into game (game_name, game_dt) values('Chaves VS Paços de Ferreira', STR_TO_DATE('02.11.2024', '%d.%m.%Y'));        #game_id = 3
+
+
+insert into competition (comp_name) values ('Liga Portugal Betclic');          #sum_id = 3 
+insert into competition (comp_name) values ('Liga Portugal Meu Super');        #sum_id = 3 
+insert into competition (comp_name) values ('Taça da Liga');                   #sum_id = 3
+insert into competition (comp_name) values ('Taça de Portugal');               #sum_id = 3
+
+
+insert into stadium (sta_name,sta_adress,sta_game_id) values ('Estádio Municipal Engenheiro Manuel Branco Teixeira',  'Av. do Estádio Municipal, 5400-234, Chaves', 3);        #sta_id = 3  
+insert into stadium (sta_name,sta_adress,sta_game_id) values ('Estádio Doutor Carlos Osório','null', 2);                                                                       #sta_id = 3
+insert into stadium (sta_name,sta_adress,sta_game_id) values ('Estádio do FC Vizela', 'Rua José Fernanco da Costa Vieira, 4815-497, Vizela', 1);                               #sta_id = 3 
+
+
+
+insert into summoned (sum_pla_id,sum_tea_id,sum_game_id) values (1,1,1);        #sum_id = 3, 
+insert into summoned (sum_pla_id,sum_tea_id,sum_game_id) values (2,2,1);        #sum_id = 3 
+insert into summoned (sum_pla_id,sum_tea_id,sum_game_id) values (3,3,1);        #sum_id = 3 
+insert into summoned (sum_pla_id,sum_tea_id,sum_game_id) values (4,4,1);        #sum_id = 3 
+insert into summoned (sum_pla_id,sum_tea_id,sum_game_id) values (5,5,1);        #sum_id = 3 
+insert into summoned (sum_pla_id,sum_tea_id,sum_game_id) values (6,6,1);        #sum_id = 3 
+insert into summoned (sum_pla_id,sum_tea_id,sum_game_id) values (7,7,1);        #sum_id = 3 
+insert into summoned (sum_pla_id,sum_tea_id,sum_game_id) values (8,8,1);        #sum_id = 3 
+insert into summoned (sum_pla_id,sum_tea_id,sum_game_id) values (1,1,2);        #sum_id = 3 
+insert into summoned (sum_pla_id,sum_tea_id,sum_game_id) values (2,2,2);        #sum_id = 3 
+insert into summoned (sum_pla_id,sum_tea_id,sum_game_id) values (3,3,2);        #sum_id = 3 
+insert into summoned (sum_pla_id,sum_tea_id,sum_game_id) values (4,4,2);        #sum_id = 3 
+insert into summoned (sum_pla_id,sum_tea_id,sum_game_id) values (5,5,2);        #sum_id = 3 
+insert into summoned (sum_pla_id,sum_tea_id,sum_game_id) values (6,6,2);        #sum_id = 3 
+insert into summoned (sum_pla_id,sum_tea_id,sum_game_id) values (7,7,2);        #sum_id = 3 
+insert into summoned (sum_pla_id,sum_tea_id,sum_game_id) values (8,8,2);        #sum_id = 3 
+insert into summoned (sum_pla_id,sum_tea_id,sum_game_id) values (1,1,2);        #sum_id = 3 
+insert into summoned (sum_pla_id,sum_tea_id,sum_game_id) values (2,2,2);        #sum_id = 3 
+insert into summoned (sum_pla_id,sum_tea_id,sum_game_id) values (3,3,2);        #sum_id = 3 
+insert into summoned (sum_pla_id,sum_tea_id,sum_game_id) values (4,4,2);        #sum_id = 3  
+insert into summoned (sum_pla_id,sum_tea_id,sum_game_id) values (5,5,2);        #sum_id = 3 
+insert into summoned (sum_pla_id,sum_tea_id,sum_game_id) values (6,6,2);        #sum_id = 3 
+insert into summoned (sum_pla_id,sum_tea_id,sum_game_id) values (7,7,2);        #sum_id = 3 
+insert into summoned (sum_pla_id,sum_tea_id,sum_game_id) values (8,8,2);        #sum_id = 3
+
+
+
+insert into playerposition (ppo_pla_id, ppo_pos_id) values(1,10); 
+insert into playerposition (ppo_pla_id, ppo_pos_id) values(2,10); 
+insert into playerposition (ppo_pla_id, ppo_pos_id) values(3,7); 
+insert into playerposition (ppo_pla_id, ppo_pos_id) values(4,9); 
+insert into playerposition (ppo_pla_id, ppo_pos_id) values(5,9); 
+insert into playerposition (ppo_pla_id, ppo_pos_id) values(6,8); 
+insert into playerposition (ppo_pla_id, ppo_pos_id) values(7,1) ; 
+insert into playerposition (ppo_pla_id, ppo_pos_id) values(8,4);  
+insert into playerposition (ppo_pla_id, ppo_pos_id) values(9,10);  
+insert into playerposition (ppo_pla_id, ppo_pos_id) values(10,10);  
+insert into playerposition (ppo_pla_id, ppo_pos_id) values(11,7); 
+ 
+ 
+ 
+insert into opponentplayer (oppla_pla_id,oppla_opp_id) values(9,1); 
+insert into opponentplayer (oppla_pla_id,oppla_opp_id) values(10,1); 
+insert into opponentplayer (oppla_pla_id,oppla_opp_id) values(11,1); 
+ 
+ 
+ 
+insert into seasonopponentplayer (seaoppla_pla_id, seaoppla_opp_id) values(9,1);  
+insert into seasonopponentplayer (seaoppla_pla_id, seaoppla_opp_id) values(9,2); 
+insert into seasonopponentplayer (seaoppla_pla_id, seaoppla_opp_id) values(10,1); 
+insert into seasonopponentplayer (seaoppla_pla_id, seaoppla_opp_id) values(10,2); 
+insert into seasonopponentplayer (seaoppla_pla_id, seaoppla_opp_id) values(11,1); 
+insert into seasonopponentplayer (seaoppla_pla_id, seaoppla_opp_id) values(11,2); 
+  
+ 
+ 
+insert into competitiongame (comga_comp_id, comga_seas_id, comga_game_id) values (2,1,1);  
+insert into competitiongame (comga_comp_id, comga_seas_id, comga_game_id) values (2,1,2); 
+insert into competitiongame (comga_comp_id, comga_seas_id, comga_game_id) values (2,1,3); 
+ 
+ 

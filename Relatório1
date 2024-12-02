@@ -1,0 +1,88 @@
+### Proposta Inicial do Projeto
+
+**1. Identificação da Universidade, Faculdade, Elementos do Grupo, Nome do projeto e link para repositório de Github**    
+- Faculdade: IADE
+- Elementos do Grupo: Tiago Morais e Miguel Dias  
+- Nome do projeto: Chaves App  
+- Link para o repositório GitHub:  
+
+**2. Palavras-chave**  
+Aplicação Móvel, Futebol, Clubes Desportivos, Localização, Spring Boot, Kotlin, Jetpack Compose, REST API, Base de Dados Relacional.
+
+**3. Breve descrição da App e do problema que pretende resolver**  
+A aplicação "Chaves App" destina-se a melhorar a experiência dos adeptos do Grupo Desportivo de Chaves.
+Através da app, os utilizadores poderão aceder a notícias do clube, consultar estatísticas dos jogos, comprar bilhetes, ver o calendário de jogos, e receber notificações de atualizações em tempo real. O problema que pretende resolver é a falta de uma solução integrada e acessível para os adeptos do Chaves se manterem informados e conectados com o clube de forma digital.
+
+**4. Descrição dos objetivos e da motivação do trabalho a realizar**  
+- **Objetivos:**  
+  - Desenvolver uma aplicação que centralize todas as informações sobre o clube.
+  - Proporcionar aos adeptos uma forma rápida de aceder a dados sobre o clube, jogos e notícias.
+  - Integrar funcionalidades de localização para indicar a localização dos jogos e estádios próximos.
+  
+- **Motivação:**  
+  A ausência de uma app dedicada ao Chaves e a crescente necessidade de digitalização no desporto motivam a criação desta aplicação, que visa melhorar o envolvimento dos adeptos com o clube.
+
+**5. Identificação do Público-Alvo**  
+O público-alvo inclui adeptos do Grupo Desportivo de Chaves, com especial foco nos jovens e adultos com interesse em futebol e tecnologia. 
+A aplicação também poderá atrair novos adeptos e turistas que estejam interessados em acompanhar os eventos do clube.
+
+**6. Pesquisa de mercado**  
+Existem várias apps de clubes desportivos como o Benfica, FC Porto e Sporting, que oferecem funcionalidades semelhantes, como bilheteiras, notícias e estatísticas.
+A "Chaves App" segue uma linha semelhante, adaptando-se à realidade do clube e da região de Chaves, oferecendo uma experiência mais pessoal e dedicada aos adeptos locais.
+
+**7. Guiões de Teste**  
+- **Caso de utilização "core":**  
+  - **Título:** Consultar o calendário de jogos.  
+  - **Descrição:** O utilizador abre a app e acede à secção de calendário. A app apresenta a lista dos jogos futuros com as respetivas datas, horas e localizações.  
+  - **Passos:**
+    1. O utilizador inicia a sessão na aplicação.
+    2. Seleciona a opção "Calendário de Jogos".
+    3. A aplicação apresenta a lista dos jogos do Chaves.
+  
+- **Caso de utilização 2:**  
+  - **Título:** Compra de bilhetes.  
+  - **Descrição:** O utilizador seleciona um jogo do calendário e compra bilhetes diretamente na app.  
+  - **Passos:**
+    1. O utilizador seleciona um jogo.
+    2. Escolhe a opção "Comprar Bilhetes".
+    3. A app redireciona para o sistema de pagamento integrado.
+  
+- **Caso de utilização 3:**  
+  - **Título:** Receber notificações de eventos ao vivo.  
+  - **Descrição:** O utilizador ativa notificações para ser informado em tempo real sobre o progresso dos jogos e outros eventos do clube.  
+  - **Passos:**
+    1. O utilizador ativa as notificações.
+    2. Durante um jogo, a app envia atualizações sobre o resultado e eventos importantes.
+
+**8. Descrição da solução a implementar**  
+- **Descrição genérica da solução:**  
+  A solução consiste numa aplicação móvel desenvolvida em Kotlin com Jetpack Compose para a interface de utilizador. 
+  O backend será desenvolvido em Java, com Spring Boot para a implementação de Webservices REST e PostgreSQL para a base de dados. 
+
+- **Enquadramento nas Unidades Curriculares:**
+  - **Programação Mobile:** Desenvolvimento da app em Android Studio com Kotlin.
+  - **Programação Orientada a Objetos:** Utilização do Spring Boot para criar o backend e as APIs REST.
+  - **Bases de Dados:** Modelação e gestão de uma base de dados relacional.
+  
+- **Requisitos Técnicos para desenvolvimento:**
+  - Android Studio Koala Feature Drop | 2024.1.2.
+  - Kotlin e Jetpack Compose para desenvolvimento mobile.
+  - Java e Spring Boot para Webservices REST.
+  - PostgreSQL para a base de dados.
+  
+- **Arquitetura da Solução:**  
+  A aplicação seguirá a arquitetura MVC, com a separação clara entre a interface de utilizador, os serviços e o modelo de dados. A comunicação entre o frontend e o backend será feita através de APIs REST.
+
+**9. Planeamento e Calendarização**  
+- **Distribuição de Tarefas:**
+  - Tarefa 1: Criação da estrutura da aplicação e configuração inicial.
+  - Tarefa 2: Desenvolvimento da interface de utilizador com Jetpack Compose.
+  - Tarefa 3: Desenvolvimento dos Webservices REST com Spring Boot.
+  - Tarefa 4: Integração da base de dados.
+  - Tarefa 5: Implementação de testes e ajustes finais.
+
+**10. Conclusão**  
+O objetivo principal da "Chaves App" é centralizar informações sobre o clube de futebol, tornando-as acessíveis para os adeptos de forma rápida e intuitiva. A aplicação irá melhorar a comunicação entre o clube e os adeptos, aumentando o seu envolvimento.
+
+**11. Bibliografia**  
+- [Referências relacionadas ao desenvolvimento mobile com Kotlin e Spring Boot]
