@@ -1,44 +1,53 @@
-package Grupo3pt.iade.ChavesApp.controllers;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import Grupo3pt.iade.ChavesApp.models.Team;
-import Grupo3pt.iade.ChavesApp.services.TeamService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-
-
-
+import java.util.Optional;
 
 @RestController
-@RequestMapping("/api")
-
+@RequestMapping("/teams")
 public class TeamController {
+
     @Autowired
-    private TeamService serviceTeams;
+    private TeamRepository teamRepository;
 
-    @GetMapping("/teams")
-    public List<Team> getTeams(){
-        return serviceTeams.getTeams();
+    @GetMapping
+    public List<Team> getAllTeams() {
+        return teamRepository.findAll();
     }
 
-    @PostMapping("/insertTeam")
-    public Team addTeam(@RequestBody Team team) {
-        return serviceTeams.addTeam(team);
+    @GetMapping("/{id}")
+    public ResponseEntity<Team> getTeamById(@PathVariable Long id) {
+        Optional<Team> team = teamRepository.findById(id);
+        return team.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
-    @GetMapping("/teamById/{id}")
-    public Team teamId(@PathVariable Integer id) {
-        return serviceTeams.findTeamById(id);
+
+    @PostMapping
+    public Team createTeam(@RequestBody Team team) {
+        return teamRepository.save(team);
     }
-    @GetMapping("/teamByName/{name}")
-    public Team getName(@PathVariable String name) {
-        return serviceTeams.findTeamByName(name);
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Team> updateTeam(@PathVariable Long id, @RequestBody Team teamDetails) {
+        Optional<Team> optionalTeam = teamRepository.findById(id);
+        if (optionalTeam.isPresent()) {
+            Team team = optionalTeam.get();
+            team.setName(teamDetails.getName());
+            team.setPlayers(teamDetails.getPlayers()); // Assumindo que há uma lista de jogadores
+            return ResponseEntity.ok(teamRepository.save(team));
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
-    
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteTeam(@PathVariable Long id) {
+        if (teamRepository.existsById(id)) {
+            teamRepository.deleteById(id);
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }

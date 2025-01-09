@@ -1,35 +1,56 @@
-package Grupo3pt.iade.ChavesApp.controllers;
-
-
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import Grupo3pt.iade.ChavesApp.models.Match;
-import Grupo3pt.iade.ChavesApp.services.MatchService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-
-
-
-
-
+import java.util.List;
+import java.util.Optional;
 
 @RestController
-@RequestMapping("/api")
-
+@RequestMapping("/matches")
 public class MatchController {
+
     @Autowired
-    private MatchService serviceMatch;
+    private MatchRepository matchRepository;
 
-
-    @GetMapping("/matchById/{id}")
-    public Match teamId(@PathVariable Integer id) {
-        return serviceMatch.findMatchById(id);
+    @GetMapping
+    public List<Match> getAllMatches() {
+        return matchRepository.findAll();
     }
 
-    
+    @GetMapping("/{id}")
+    public ResponseEntity<Match> getMatchById(@PathVariable Long id) {
+        Optional<Match> match = matchRepository.findById(id);
+        return match.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
 
-    
+    @PostMapping
+    public Match createMatch(@RequestBody Match match) {
+        return matchRepository.save(match);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Match> updateMatch(@PathVariable Long id, @RequestBody Match matchDetails) {
+        Optional<Match> optionalMatch = matchRepository.findById(id);
+        if (optionalMatch.isPresent()) {
+            Match match = optionalMatch.get();
+            match.setDate(matchDetails.getDate());
+            match.setPlayer1(matchDetails.getPlayer1());
+            match.setPlayer2(matchDetails.getPlayer2());
+            match.setScore(matchDetails.getScore());
+            return ResponseEntity.ok(matchRepository.save(match));
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteMatch(@PathVariable Long id) {
+        if (matchRepository.existsById(id)) {
+            matchRepository.deleteById(id);
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
+

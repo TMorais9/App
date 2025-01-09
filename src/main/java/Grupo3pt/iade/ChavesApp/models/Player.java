@@ -1,54 +1,64 @@
-package Grupo3pt.iade.ChavesApp.models;
-
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import java.time.LocalDate;
 
 @Entity
-@Table(name = "players")
+@Table(name = "player")
 public class Player {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    
+    private Long id;
+
     @Column(nullable = false)
     private String name;
 
-    @Column
-    private Integer jerseyNumber;
+    @Column(nullable = false)
+    private LocalDate birthDate;
 
-    
     @ManyToOne
-    @JoinColumn(name ="team_id")
+    @JoinColumn(name = "team_id")
     private Team team;
-    
-    public int getId(){
+
+    @Column
+    private String position;
+
+    public Long getId() {
         return id;
     }
 
-    public String getName(){
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
         return name;
     }
 
-    public void setName(String name){
-       this.name = name;
-        
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Integer getJerseyNumber(){
-        return jerseyNumber;
+    public LocalDate getBirthDate() {
+        return birthDate;
     }
 
-    public void setJerseyNumber(Integer jerseyNumber){
-       this.jerseyNumber = jerseyNumber;
-        
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
     }
 
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
 }

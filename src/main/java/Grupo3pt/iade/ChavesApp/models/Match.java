@@ -1,87 +1,66 @@
-package Grupo3pt.iade.ChavesApp.models;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import java.time.LocalDate;
 
 @Entity
-@Table(name = "matches")
-
-
+@Table(name = "match")
 public class Match {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    
-    @OneToOne
-    private Team homeTeam;
+    private Long id;
 
-    @OneToOne
-    private Team awayTeam;
+    @Column(nullable = false)
+    private LocalDate date;
 
-    @Column
-    private String matchStadium;
+    @ManyToOne
+    @JoinColumn(name = "player1_id", nullable = false)
+    private Player player1;
 
-    @Column
-    private String matchDate;
+    @ManyToOne
+    @JoinColumn(name = "player2_id", nullable = false)
+    private Player player2;
 
+    @Column(nullable = true)
+    private String score;
 
-    public int getId(){
+    public Long getId() {
         return id;
     }
 
-    public Team getHomeTeam(){
-        return homeTeam;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setHomeTeam(Team homeTeam){
-       this.homeTeam= homeTeam;
-        
+    public LocalDate getDate() {
+        return date;
     }
 
-    public Team getAwayTeam(){
-        return awayTeam;
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
-    public void setAwayTeam(Team awayTeam){
-       this.awayTeam= awayTeam;
-        
-    }
-    
-    public String getMatchStadium(){
-        return homeTeam.getStadium();
+    public Player getPlayer1() {
+        return player1;
     }
 
-    
-    public String getMatchDate(){
-        return matchDate;
+    public void setPlayer1(Player player1) {
+        this.player1 = player1;
     }
-    
-    public void setMatchDate(String matchDate){
-        this.matchDate= matchDate;
-         
-     }
 
+    public Player getPlayer2() {
+        return player2;
+    }
 
-   
-    
-    
-         
-     
+    public void setPlayer2(Player player2) {
+        this.player2 = player2;
+    }
 
+    public String getScore() {
+        return score;
+    }
 
-
+    public void setScore(String score) {
+        this.score = score;
+    }
 }
-    
-    
-
-    
-
-
-
 
