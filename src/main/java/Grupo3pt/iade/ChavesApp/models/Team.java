@@ -1,3 +1,5 @@
+package Grupo3pt.iade.ChavesApp.models;
+
 import jakarta.persistence.*;
 import java.util.List;
 

@@ -1,5 +1,6 @@
+package Grupo3pt.iade.ChavesApp.models;
+
 import jakarta.persistence.*;
-import java.time.LocalDate;
 
 @Entity
 @Table(name = "player")
@@ -7,58 +8,129 @@ public class Player {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer pla_id;
 
-    @Column(nullable = false)
-    private String name;
+    @Column(name = "pla_name", nullable = false, length = 60)
+    private String pla_name;
 
-    @Column(nullable = false)
-    private LocalDate birthDate;
+    @Column(name = "pla_bdate", nullable = false)
+    private String pla_bdate;
 
-    @ManyToOne
-    @JoinColumn(name = "team_id")
-    private Team team;
+    @Column(name = "pla_anos", nullable = false, length = 60)
+    private String pla_anos;
 
-    @Column
-    private String position;
+    @Column(name = "pla_num", nullable = false, length = 60)
+    private String pla_num;
 
-    public Long getId() {
-        return id;
+    @Column(name = "pla_nac", nullable = false, length = 60)
+    private String pla_nac;
+
+    @Column(name = "pla_foto", length = 200)
+    private String pla_foto;
+
+    public Integer getPla_id() {
+        return pla_id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setPla_id(Integer pla_id) {
+        this.pla_id = pla_id;
     }
 
-    public String getName() {
-        return name;
+    public String getPla_name() {
+        return pla_name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPla_name(String pla_name) {
+        this.pla_name = pla_name;
     }
 
-    public LocalDate getBirthDate() {
-        return birthDate;
+    public String getPla_bdate() {
+        return pla_bdate;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
+    public void setPla_bdate(String pla_bdate) {
+        this.pla_bdate = pla_bdate;
     }
 
-    public Team getTeam() {
-        return team;
+    public String getPla_anos() {
+        return pla_anos;
     }
 
-    public void setTeam(Team team) {
-        this.team = team;
+    public void setPla_anos(String pla_anos) {
+        this.pla_anos = pla_anos;
     }
 
-    public String getPosition() {
-        return position;
+    public String getPla_num() {
+        return pla_num;
     }
 
-    public void setPosition(String position) {
-        this.position = position;
+    public void setPla_num(String pla_num) {
+        this.pla_num = pla_num;
+    }
+
+    public String getPla_nac() {
+        return pla_nac;
+    }
+
+    public void setPla_nac(String pla_nac) {
+        this.pla_nac = pla_nac;
+    }
+
+    public String getPla_foto() {
+        return pla_foto;
+    }
+
+    public void setPla_foto(String pla_foto) {
+        this.pla_foto = pla_foto;
+    }
+
+    public Object getBirthDate() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getBirthDate'");
+    }
+
+    public Object getYears() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getYears'");
+    }
+
+    public Object getNumber() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getNumber'");
+    }
+
+    public Object getNationality() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getNationality'");
+    }
+
+    public Object getPhoto() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getPhoto'");
+    }
+
+    public void setPhoto(Object photo) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setPhoto'");
+    }
+
+    public void setNationality(Object nationality) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setNationality'");
+    }
+
+    public void setNumber(Object number) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setNumber'");
+    }
+
+    public void setYears(Object years) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setYears'");
+    }
+
+    public void setBirthDate(Object birthDate) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setBirthDate'");
     }
 }

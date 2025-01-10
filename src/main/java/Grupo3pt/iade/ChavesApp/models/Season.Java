@@ -1,5 +1,6 @@
-import jakarta.persistence.*;
-import java.time.LocalDate;
+package Grupo3pt.iade.ChavesApp.models;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "season")
@@ -9,14 +10,11 @@ public class Season {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 60)
+    @Column(nullable = false)
     private String name;
 
-    @Column(name = "start_date")
-    private LocalDate startDate;
-
-    @Column(name = "end_date")
-    private LocalDate endDate;
+    @Column(nullable = false)
+    private int year;
 
     public Long getId() {
         return id;
@@ -34,19 +32,12 @@ public class Season {
         this.name = name;
     }
 
-    public LocalDate getStartDate() {
-        return startDate;
+    public int getYear() {
+        return year;
     }
 
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
-    }
-
-    public LocalDate getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
+    public void setYear(int year) {
+        this.year = year;
     }
 }
+

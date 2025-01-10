@@ -11,6 +11,7 @@ public class JwtUtils {
     private final String secret = "your_secret_key";
     private final long expirationMs = 86400000;
 
+    @SuppressWarnings("deprecation")
     public String generateToken(String username) {
         return Jwts.builder()
                 .setSubject(username)
@@ -20,10 +21,12 @@ public class JwtUtils {
                 .compact();
     }
 
+    @SuppressWarnings("deprecation")
     public String getUsernameFromToken(String token) {
         return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody().getSubject();
     }
 
+    @SuppressWarnings("deprecation")
     public boolean validateToken(String token) {
         try {
             Jwts.parser().setSigningKey(secret).parseClaimsJws(token);

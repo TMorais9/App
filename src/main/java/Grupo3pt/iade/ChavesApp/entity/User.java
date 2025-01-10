@@ -1,3 +1,5 @@
+package Grupo3pt.iade.ChavesApp.entity;
+
 import jakarta.persistence.*;
 
 @Entity
