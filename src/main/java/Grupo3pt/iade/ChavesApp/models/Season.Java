@@ -1,6 +1,6 @@
 package Grupo3pt.iade.ChavesApp.models;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "season")
@@ -40,4 +40,3 @@ public class Season {
         this.year = year;
     }
 }
-

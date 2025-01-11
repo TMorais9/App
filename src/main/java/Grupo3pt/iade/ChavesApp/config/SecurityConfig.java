@@ -2,35 +2,29 @@ package Grupo3pt.iade.ChavesApp.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
+@EnableWebSecurity
 public class SecurityConfig {
-
-    private final UserDetailsService userDetailsService;
-
-    public SecurityConfig(UserDetailsService userDetailsService) {
-        this.userDetailsService = userDetailsService;
-    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
-    @SuppressWarnings("removal")
+    
     @Bean
-    public AuthenticationManager authenticationManager(AuthenticationManagerBuilder builder) throws Exception {
-        return builder.userDetailsService(userDetailsService)
-                      .passwordEncoder(passwordEncoder())
-                      .and()
-                      .build();
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+        return authenticationConfiguration.getAuthenticationManager();
     }
 
     @SuppressWarnings("deprecation")
@@ -39,10 +33,17 @@ public class SecurityConfig {
         http.csrf(csrf -> csrf.disable())
             .authorizeRequests(requests -> requests
                 .requestMatchers("/auth/**").permitAll()
-                .anyRequest().authenticated()
-            )
-            .formLogin(form -> form.disable());
-
+                .anyRequest().authenticated());
         return http.build();
+    }
+
+    @Bean
+    public UserDetailsService userDetailsService() {
+        return new InMemoryUserDetailsManager(
+            User.withUsername("user")
+                .password(passwordEncoder().encode("password"))
+                .roles("USER")
+                .build()
+        );
     }
 }

@@ -11,43 +11,39 @@ import java.util.Optional;
 @Service
 public class MatchService {
 
-    @SuppressWarnings("rawtypes")
     @Autowired
     private MatchRepository matchRepository;
 
-    @SuppressWarnings("unchecked")
     public List<Match> getAllMatches() {
         return matchRepository.findAll();
     }
 
-    @SuppressWarnings("unchecked")
     public Optional<Match> getMatchById(Long id) {
         return matchRepository.findById(id);
     }
 
-    @SuppressWarnings("unchecked")
     public Match createMatch(Match match) {
-        return (Match) matchRepository.save(match);
+        return matchRepository.save(match);
     }
 
-    @SuppressWarnings("unchecked")
-    public Optional<Match> updateMatch(Long id, Match matchDetails) {
-        return matchRepository.findById(id).map(match -> {
-            ((Match) match).setDate(matchDetails.getDate());
-            ((Match) match).setPlayer1(matchDetails.getPlayer1());
-            ((Match) match).setPlayer2(matchDetails.getPlayer2());
-            ((Match) match).setScore(matchDetails.getScore());
-            return matchRepository.save(match);
-        });
+    public Match updateMatch(Long id, Match matchDetails) {
+        return matchRepository.findById(id)
+            .map(match -> {
+                match.setDate(matchDetails.getDate());
+                match.setPlayer1(matchDetails.getPlayer1());
+                match.setPlayer2(matchDetails.getPlayer2());
+                match.setScore(matchDetails.getScore());
+                return matchRepository.save(match);
+            })
+            .orElseThrow(() -> new RuntimeException("Match not found with id " + id));
     }
 
-    @SuppressWarnings("unchecked")
-    public boolean deleteMatch(Long id) {
+    public void deleteMatch(Long id) {
         if (matchRepository.existsById(id)) {
             matchRepository.deleteById(id);
-            return true;
+        } else {
+            throw new RuntimeException("Match not found with id " + id);
         }
-        return false;
     }
 }
 

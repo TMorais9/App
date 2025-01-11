@@ -12,26 +12,26 @@ import java.util.Optional;
 @Service
 public class TeamService {
 
-    @SuppressWarnings("rawtypes")
+    
     @Autowired
     private TeamRepository teamRepository;
 
-    @SuppressWarnings("unchecked")
+   
     public List<Team> getAllTeams() {
         return teamRepository.findAll();
     }
 
-    @SuppressWarnings("unchecked")
+ 
     public Optional<Team> getTeamById(Long id) {
         return teamRepository.findById(id);
     }
 
-    @SuppressWarnings("unchecked")
+
     public Team createTeam(Team team) {
         return (Team) teamRepository.save(team);
     }
 
-    @SuppressWarnings("unchecked")
+   
     public Optional<Team> updateTeam(Long id, Team teamDetails) {
         return teamRepository.findById(id).map(team -> {
             ((Team) team).setName(teamDetails.getName());
@@ -40,7 +40,7 @@ public class TeamService {
         });
     }
 
-    @SuppressWarnings("unchecked")
+   
     public boolean deleteTeam(Long id) {
         if (teamRepository.existsById(id)) {
             teamRepository.deleteById(id);

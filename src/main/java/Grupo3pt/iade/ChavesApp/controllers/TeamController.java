@@ -14,11 +14,10 @@ import java.util.Optional;
 @RequestMapping("/teams")
 public class TeamController {
 
-    @SuppressWarnings("rawtypes")
     @Autowired
     private TeamRepository teamRepository;
 
-    @SuppressWarnings("unchecked")
+    
     @GetMapping
     public List<Team> getAllTeams() {
         return teamRepository.findAll();
@@ -26,18 +25,15 @@ public class TeamController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Team> getTeamById(@PathVariable Long id) {
-        @SuppressWarnings("unchecked")
         Optional<Team> team = teamRepository.findById(id);
         return team.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @SuppressWarnings("unchecked")
     @PostMapping
     public Object createTeam(@RequestBody Team team) {
         return teamRepository.save(team);
     }
 
-    @SuppressWarnings("unchecked")
     @PutMapping("/{id}")
     public ResponseEntity<Object> updateTeam(@PathVariable Long id, @RequestBody Team teamDetails) {
         Optional<Team> optionalTeam = teamRepository.findById(id);
@@ -51,7 +47,6 @@ public class TeamController {
         }
     }
 
-    @SuppressWarnings("unchecked")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteTeam(@PathVariable Long id) {
         if (teamRepository.existsById(id)) {

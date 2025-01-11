@@ -1,5 +1,6 @@
 package Grupo3pt.iade.ChavesApp.controllers;
 
+import Grupo3pt.iade.ChavesApp.models.Season; 
 import Grupo3pt.iade.ChavesApp.services.SeasonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,26 +16,26 @@ public class SeasonController {
     private SeasonService seasonService;
 
     @GetMapping
-    public List<Grupo3pt.iade.ChavesApp.services.Season> getAllSeasons() {
+    public List<Season> getAllSeasons() {
         return seasonService.getAllSeasons();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Grupo3pt.iade.ChavesApp.services.Season> getSeasonById(@PathVariable Long id) {
+    public ResponseEntity<Season> getSeasonById(@PathVariable Long id) {
         return seasonService.getSeasonById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public Season createSeason(@RequestBody Grupo3pt.iade.ChavesApp.services.Season season) {
+    public Season createSeason(@RequestBody Season season) {
         return seasonService.createSeason(season);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Season> updateSeason(@PathVariable Long id, @RequestBody Grupo3pt.iade.ChavesApp.services.Season seasonDetails) {
+    public ResponseEntity<Season> updateSeason(@PathVariable Long id, @RequestBody Season seasonDetails) {
         try {
-            Season updatedSeason = (Season) seasonService.updateSeason(id, seasonDetails);
+            Season updatedSeason = seasonService.updateSeason(id, seasonDetails);
             return ResponseEntity.ok(updatedSeason);
         } catch (RuntimeException e) {
             return ResponseEntity.notFound().build();
@@ -47,4 +48,6 @@ public class SeasonController {
         return ResponseEntity.noContent().build();
     }
 }
+
+
 

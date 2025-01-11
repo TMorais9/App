@@ -14,7 +14,7 @@ public class Team {
     @Column(nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Player> players;
 
     public Long getId() {
