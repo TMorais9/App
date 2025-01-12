@@ -1,6 +1,5 @@
 package Grupo3pt.iade.ChavesApp.services;
 
-import Grupo3pt.iade.ChavesApp.models.OpponentPlayer;
 import Grupo3pt.iade.ChavesApp.models.OpponentTeam;
 import Grupo3pt.iade.ChavesApp.models.PlayerPosition;
 import Grupo3pt.iade.ChavesApp.repositories.OpponentTeamRepository;

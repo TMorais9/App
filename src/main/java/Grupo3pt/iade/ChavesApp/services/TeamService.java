@@ -1,6 +1,5 @@
 package Grupo3pt.iade.ChavesApp.services;
 
-import Grupo3pt.iade.ChavesApp.models.Player;
 import Grupo3pt.iade.ChavesApp.models.PlayerPosition;
 import Grupo3pt.iade.ChavesApp.models.Team;
 import Grupo3pt.iade.ChavesApp.repositories.TeamRepository;

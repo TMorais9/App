@@ -10,12 +10,13 @@ public class Season {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(name = "seas_name", nullable = false, length = 60)
     private String name;
 
-    @Column(nullable = false)
+    @Column(name = "seas_year", nullable = false)
     private int year;
 
+   
     public Long getId() {
         return id;
     }
