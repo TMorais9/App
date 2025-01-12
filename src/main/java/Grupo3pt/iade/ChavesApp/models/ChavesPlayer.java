@@ -3,8 +3,8 @@ package Grupo3pt.iade.ChavesApp.models;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "player")
-public class Player {
+@Table(name = "Chavesplayer")
+public class ChavesPlayer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -85,52 +85,42 @@ public class Player {
     }
 
     public Object getBirthDate() {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getBirthDate'");
     }
 
     public Object getYears() {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getYears'");
     }
 
     public Object getNumber() {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getNumber'");
     }
 
     public Object getNationality() {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getNationality'");
     }
 
     public Object getPhoto() {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getPhoto'");
     }
 
     public void setPhoto(Object photo) {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'setPhoto'");
     }
 
     public void setNationality(Object nationality) {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'setNationality'");
     }
 
     public void setNumber(Object number) {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'setNumber'");
     }
 
-    public void setYears(Object years) {
-        // TODO Auto-generated method stub
+    public void setYears(Object years) {       
         throw new UnsupportedOperationException("Unimplemented method 'setYears'");
     }
 
-    public void setBirthDate(Object birthDate) {
-        // TODO Auto-generated method stub
+    public void setBirthDate(Object birthDate) {       
         throw new UnsupportedOperationException("Unimplemented method 'setBirthDate'");
     }
 }

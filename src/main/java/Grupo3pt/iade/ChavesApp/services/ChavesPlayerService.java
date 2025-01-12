@@ -3,31 +3,31 @@ package Grupo3pt.iade.ChavesApp.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import Grupo3pt.iade.ChavesApp.models.Player;
-import Grupo3pt.iade.ChavesApp.repositories.PlayerRepository;
+import Grupo3pt.iade.ChavesApp.models.ChavesPlayer;
+import Grupo3pt.iade.ChavesApp.repositories.ChavesPlayerRepository;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class PlayerService {
+public class ChavesPlayerService {
 
     @Autowired
-    private PlayerRepository playerRepository;
+    private ChavesPlayerRepository playerRepository;
 
-    public List<Player> getAllPlayers() {
+    public List<ChavesPlayer> getAllPlayers() {
         return playerRepository.findAll();
     }
 
-    public Optional<Player> getPlayerById(Long id) {
+    public Optional<ChavesPlayer> getPlayerById(Long id) {
         return playerRepository.findById(id);
     }
 
-    public Player createPlayer(Player player) {
+    public ChavesPlayer createPlayer(ChavesPlayer player) {
         return playerRepository.save(player);
     }
 
-    public Player updatePlayer(Long id, Player playerDetails) {
+    public ChavesPlayer updatePlayer(Long id, ChavesPlayer playerDetails) {
         return playerRepository.findById(id)
             .map(player -> {
                 player.setPla_name(playerDetails.getPla_name());

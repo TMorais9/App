@@ -1,10 +1,9 @@
 package Grupo3pt.iade.ChavesApp.repositories;
 
+import Grupo3pt.iade.ChavesApp.models.OpponentPlayer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import Grupo3pt.iade.ChavesApp.models.Player;
-
 @Repository
-public interface PlayerRepository extends JpaRepository<Player, Long> {
+public interface OpponentPlayerRepository extends JpaRepository<OpponentPlayer, Integer> {
 }

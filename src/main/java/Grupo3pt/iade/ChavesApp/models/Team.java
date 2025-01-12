@@ -15,7 +15,7 @@ public class Team {
     private String name;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Player> players;
+    private List<ChavesPlayer> players;
 
     public Long getId() {
         return id;
@@ -33,11 +33,11 @@ public class Team {
         this.name = name;
     }
 
-    public List<Player> getPlayers() {
+    public List<ChavesPlayer> getPlayers() {
         return players;
     }
 
-    public void setPlayers(List<Player> players) {
+    public void setPlayers(List<ChavesPlayer> players) {
         this.players = players;
     }
 }

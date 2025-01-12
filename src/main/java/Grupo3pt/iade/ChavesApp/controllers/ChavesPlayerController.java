@@ -1,7 +1,7 @@
 package Grupo3pt.iade.ChavesApp.controllers;
 
-import Grupo3pt.iade.ChavesApp.models.Player;
-import Grupo3pt.iade.ChavesApp.repositories.PlayerRepository;
+import Grupo3pt.iade.ChavesApp.models.ChavesPlayer;
+import Grupo3pt.iade.ChavesApp.repositories.ChavesPlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,30 +10,30 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/players")
-public class PlayerController {
+public class ChavesPlayerController {
 
     @Autowired
-    private PlayerRepository playerRepository;
+    private ChavesPlayerRepository playerRepository;
 
     @GetMapping
-    public List<Player> getAllPlayers() {
+    public List<ChavesPlayer> getAllPlayers() {
         return playerRepository.findAll();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Player> getPlayerById(@PathVariable Long id) {
+    public ResponseEntity<ChavesPlayer> getPlayerById(@PathVariable Long id) {
         return playerRepository.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public Player createPlayer(@RequestBody Player player) {
+    public ChavesPlayer createPlayer(@RequestBody ChavesPlayer player) {
         return playerRepository.save(player);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Player> updatePlayer(@PathVariable Long id, @RequestBody Player playerDetails) {
+    public ResponseEntity<ChavesPlayer> updatePlayer(@PathVariable Long id, @RequestBody ChavesPlayer playerDetails) {
         return playerRepository.findById(id)
                 .map(player -> {
                     player.setPla_name(playerDetails.getPla_name());
@@ -42,7 +42,7 @@ public class PlayerController {
                     player.setNumber(playerDetails.getNumber());
                     player.setNationality(playerDetails.getNationality());
                     player.setPhoto(playerDetails.getPhoto());
-                    Player updatedPlayer = playerRepository.save(player);
+                    ChavesPlayer updatedPlayer = playerRepository.save(player);
                     return ResponseEntity.ok(updatedPlayer);
                 })
                 .orElse(ResponseEntity.notFound().build());
@@ -56,4 +56,4 @@ public class PlayerController {
         }
         return ResponseEntity.notFound().build();
     }
-}
+}                              
