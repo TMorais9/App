@@ -3,34 +3,34 @@ package Grupo3pt.iade.ChavesApp.models;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "opponentplayer")
-public class OpponentPlayer {
+@Table(name = "player")
+public class Player {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "oppla_id")
+    @Column(name = "pla_id")
     private Integer id;
 
-    @Column(name = "oppla_name", nullable = false, length = 60)
+    @Column(name = "pla_name", nullable = false, length = 60)
     private String name;
 
-    @Column(name = "oppla_bdate", nullable = false)
+    @Column(name = "pla_bdate", nullable = false)
     private String birthDate;
 
-    @Column(name = "oppla_anos", nullable = false, length = 60)
+    @Column(name = "pla_anos", nullable = false, length = 60)
     private String years;
 
-    @Column(name = "oppla_num", nullable = false, length = 60)
+    @Column(name = "pla_num", nullable = false, length = 60)
     private String number;
 
-    @Column(name = "oppla_nac", nullable = false, length = 60)
+    @Column(name = "pla_nac", nullable = false, length = 60)
     private String nationality;
 
-    @Column(name = "oppla_foto", length = 200)
+    @Column(name = "pla_foto", length = 200)
     private String photo;
 
     @ManyToOne
-    @JoinColumn(name = "oppla_pos_id", nullable = false)
+    @JoinColumn(name = "pla_pos_id", nullable = false)
     private PlayerPosition position;
 
     // Getters e Setters
@@ -98,5 +98,4 @@ public class OpponentPlayer {
         this.position = position;
     }
 }
-
 

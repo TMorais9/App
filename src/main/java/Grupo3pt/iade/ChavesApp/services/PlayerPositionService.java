@@ -12,30 +12,31 @@ import java.util.Optional;
 public class PlayerPositionService {
 
     @Autowired
-    private PlayerPositionRepository playerPositionRepository;
+    private PlayerPositionRepository positionRepository;
 
     public List<PlayerPosition> getAllPositions() {
-        return playerPositionRepository.findAll();
+        return positionRepository.findAll();
     }
 
     public Optional<PlayerPosition> getPositionById(Integer id) {
-        return playerPositionRepository.findById(id);
+        return positionRepository.findById(id);
     }
 
     public PlayerPosition createPosition(PlayerPosition position) {
-        return playerPositionRepository.save(position);
+        return positionRepository.save(position);
     }
 
     public PlayerPosition updatePosition(Integer id, PlayerPosition positionDetails) {
-        return playerPositionRepository.findById(id)
+        return positionRepository.findById(id)
             .map(position -> {
                 position.setPos_name(positionDetails.getPos_name());
-                return playerPositionRepository.save(position);
+                return positionRepository.save(position);
             })
             .orElseThrow(() -> new RuntimeException("Position not found with id " + id));
     }
 
     public void deletePosition(Integer id) {
-        playerPositionRepository.deleteById(id);
+        positionRepository.deleteById(id);
     }
 }
+

@@ -14,7 +14,6 @@ public class PlayerPosition {
     @Column(name = "pos_name", nullable = false, length = 60)
     private String pos_name;
 
-    // Getters e Setters
     public Integer getPos_id() {
         return pos_id;
     }
@@ -31,5 +30,6 @@ public class PlayerPosition {
         this.pos_name = pos_name;
     }
 }
+
 
 

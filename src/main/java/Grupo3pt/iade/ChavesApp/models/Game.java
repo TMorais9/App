@@ -10,29 +10,29 @@ public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "game_id")
-    private Integer id;
+    private Long id;
 
     @Column(name = "game_name", nullable = false, length = 60)
     private String name;
 
-    @Column(name = "game_dt", nullable = false)
+    @Column(name = "game_date", nullable = false)
+    @Temporal(TemporalType.DATE)
     private Date date;
 
-    @Column(name = "game_sta_id", nullable = false)
-    private Integer stadiumId;
+    @ManyToOne
+    @JoinColumn(name = "game_team_id", nullable = false)
+    private Team team;
 
-    @Column(name = "game_comp_id", nullable = false)
-    private Integer competitionId;
-
-    @Column(name = "game_opp_id", nullable = false)
-    private Integer opponentId;
+    @ManyToOne
+    @JoinColumn(name = "game_opponent_team_id", nullable = false)
+    private OpponentTeam opponentTeam;
 
     // Getters e Setters
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -52,29 +52,22 @@ public class Game {
         this.date = date;
     }
 
-    public Integer getStadiumId() {
-        return stadiumId;
+    public Team getTeam() {
+        return team;
     }
 
-    public void setStadiumId(Integer stadiumId) {
-        this.stadiumId = stadiumId;
+    public void setTeam(Team team) {
+        this.team = team;
     }
 
-    public Integer getCompetitionId() {
-        return competitionId;
+    public OpponentTeam getOpponentTeam() {
+        return opponentTeam;
     }
 
-    public void setCompetitionId(Integer competitionId) {
-        this.competitionId = competitionId;
-    }
-
-    public Integer getOpponentId() {
-        return opponentId;
-    }
-
-    public void setOpponentId(Integer opponentId) {
-        this.opponentId = opponentId;
+    public void setOpponentTeam(OpponentTeam opponentTeam) {
+        this.opponentTeam = opponentTeam;
     }
 }
+
 
 

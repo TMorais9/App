@@ -1,9 +1,9 @@
 package Grupo3pt.iade.ChavesApp.services;
 
-import Grupo3pt.iade.ChavesApp.models.Player;
+import Grupo3pt.iade.ChavesApp.models.OpponentPlayer;
+import Grupo3pt.iade.ChavesApp.models.OpponentTeam;
 import Grupo3pt.iade.ChavesApp.models.PlayerPosition;
-import Grupo3pt.iade.ChavesApp.models.Team;
-import Grupo3pt.iade.ChavesApp.repositories.TeamRepository;
+import Grupo3pt.iade.ChavesApp.repositories.OpponentTeamRepository;
 import Grupo3pt.iade.ChavesApp.repositories.PlayerPositionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,48 +12,45 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class TeamService {
+public class OpponentTeamService {
 
     @Autowired
-    private TeamRepository teamRepository;
+    private OpponentTeamRepository opponentTeamRepository;
 
     @Autowired
     private PlayerPositionRepository positionRepository;
 
-    public List<Team> getAllTeams() {
-        return teamRepository.findAll();
+    public List<OpponentTeam> getAllOpponentTeams() {
+        return opponentTeamRepository.findAll();
     }
 
-    public Optional<Team> getTeamById(Long id) {
-        return teamRepository.findById(id);
+    public Optional<OpponentTeam> getOpponentTeamById(Long id) {
+        return opponentTeamRepository.findById(id);
     }
 
-    public Team createTeam(Team team) {
+    public OpponentTeam createOpponentTeam(OpponentTeam team) {
         team.getPlayers().forEach(player -> {
             Integer positionId = player.getPosition().getPos_id();
             PlayerPosition position = positionRepository.findById(positionId)
                     .orElseThrow(() -> new RuntimeException("Position not found with id " + positionId));
             player.setPosition(position);
         });
-        return teamRepository.save(team);
+        return opponentTeamRepository.save(team);
     }
 
-    public Optional<Team> updateTeam(Long id, Team teamDetails) {
-        return teamRepository.findById(id).map(existingTeam -> {
+    public Optional<OpponentTeam> updateOpponentTeam(Long id, OpponentTeam teamDetails) {
+        return opponentTeamRepository.findById(id).map(existingTeam -> {
             existingTeam.setName(teamDetails.getName());
             existingTeam.setPlayers(teamDetails.getPlayers());
-            return teamRepository.save(existingTeam);
+            return opponentTeamRepository.save(existingTeam);
         });
     }
 
-    public boolean deleteTeam(Long id) {
-        if (teamRepository.existsById(id)) {
-            teamRepository.deleteById(id);
+    public boolean deleteOpponentTeam(Long id) {
+        if (opponentTeamRepository.existsById(id)) {
+            opponentTeamRepository.deleteById(id);
             return true;
         }
         return false;
     }
 }
-
-
-
