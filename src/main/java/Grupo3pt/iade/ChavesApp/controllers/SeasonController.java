@@ -1,6 +1,6 @@
 package Grupo3pt.iade.ChavesApp.controllers;
 
-import Grupo3pt.iade.ChavesApp.models.Season; 
+import Grupo3pt.iade.ChavesApp.models.Season;
 import Grupo3pt.iade.ChavesApp.services.SeasonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
