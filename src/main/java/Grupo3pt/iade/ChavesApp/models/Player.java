@@ -1,6 +1,7 @@
 package Grupo3pt.iade.ChavesApp.models;
 
 import jakarta.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "player")
@@ -15,7 +16,8 @@ public class Player {
     private String name;
 
     @Column(name = "pla_bdate", nullable = false)
-    private String birthDate;
+    @Temporal(TemporalType.DATE)
+    private Date birthDate;
 
     @Column(name = "pla_anos", nullable = false, length = 60)
     private String years;
@@ -29,11 +31,6 @@ public class Player {
     @Column(name = "pla_foto", length = 200)
     private String photo;
 
-    @ManyToOne
-    @JoinColumn(name = "pla_pos_id", nullable = false)
-    private PlayerPosition position;
-
-    // Getters e Setters
     public Integer getId() {
         return id;
     }
@@ -50,11 +47,11 @@ public class Player {
         this.name = name;
     }
 
-    public String getBirthDate() {
+    public Date getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(String birthDate) {
+    public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
 
@@ -89,13 +86,4 @@ public class Player {
     public void setPhoto(String photo) {
         this.photo = photo;
     }
-
-    public PlayerPosition getPosition() {
-        return position;
-    }
-
-    public void setPosition(PlayerPosition position) {
-        this.position = position;
-    }
 }
-

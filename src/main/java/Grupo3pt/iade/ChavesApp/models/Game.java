@@ -10,29 +10,32 @@ public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "game_id")
-    private Long id;
+    private Integer id;
 
     @Column(name = "game_name", nullable = false, length = 60)
     private String name;
 
-    @Column(name = "game_date", nullable = false)
+    @Column(name = "game_dt", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date date;
 
     @ManyToOne
-    @JoinColumn(name = "game_team_id", nullable = false)
-    private Team team;
+    @JoinColumn(name = "game_sta_id")
+    private Stadium stadium;
 
     @ManyToOne
-    @JoinColumn(name = "game_opponent_team_id", nullable = false)
-    private OpponentTeam opponentTeam;
+    @JoinColumn(name = "game_comp_id", nullable = false)
+    private Competition competition;
 
-    // Getters e Setters
-    public Long getId() {
+    @ManyToOne
+    @JoinColumn(name = "game_opp_id")
+    private Opponent opponent;
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -52,22 +55,27 @@ public class Game {
         this.date = date;
     }
 
-    public Team getTeam() {
-        return team;
+    public Stadium getStadium() {
+        return stadium;
     }
 
-    public void setTeam(Team team) {
-        this.team = team;
+    public void setStadium(Stadium stadium) {
+        this.stadium = stadium;
     }
 
-    public OpponentTeam getOpponentTeam() {
-        return opponentTeam;
+    public Competition getCompetition() {
+        return competition;
     }
 
-    public void setOpponentTeam(OpponentTeam opponentTeam) {
-        this.opponentTeam = opponentTeam;
+    public void setCompetition(Competition competition) {
+        this.competition = competition;
+    }
+
+    public Opponent getOpponent() {
+        return opponent;
+    }
+
+    public void setOpponent(Opponent opponent) {
+        this.opponent = opponent;
     }
 }
-
-
-

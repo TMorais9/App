@@ -35,10 +35,7 @@ public class PlayerController {
     @PutMapping("/{id}")
     public ResponseEntity<Player> updatePlayer(@PathVariable Integer id, @RequestBody Player playerDetails) {
         return playerService.getPlayerById(id)
-                .map(player -> {
-                    Player updatedPlayer = playerService.updatePlayer(id, playerDetails);
-                    return ResponseEntity.ok(updatedPlayer);
-                })
+                .map(player -> ResponseEntity.ok(playerService.updatePlayer(id, playerDetails)))
                 .orElse(ResponseEntity.notFound().build());
     }
 

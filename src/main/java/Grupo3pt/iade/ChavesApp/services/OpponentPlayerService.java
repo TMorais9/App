@@ -1,9 +1,7 @@
 package Grupo3pt.iade.ChavesApp.services;
 
-import Grupo3pt.iade.ChavesApp.models.OpponentPlayer;
-import Grupo3pt.iade.ChavesApp.models.PlayerPosition;
-import Grupo3pt.iade.ChavesApp.repositories.OpponentPlayerRepository;
-import Grupo3pt.iade.ChavesApp.repositories.PlayerPositionRepository;
+import Grupo3pt.iade.ChavesApp.models.*;
+import Grupo3pt.iade.ChavesApp.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +15,16 @@ public class OpponentPlayerService {
     private OpponentPlayerRepository opponentPlayerRepository;
 
     @Autowired
-    private PlayerPositionRepository positionRepository;
+    private PlayerRepository playerRepository;
+
+    @Autowired
+    private OpponentRepository opponentRepository;
+
+    @Autowired
+    private PositionRepository positionRepository;
+
+    @Autowired
+    private SeasonRepository seasonRepository;
 
     public List<OpponentPlayer> getAllOpponentPlayers() {
         return opponentPlayerRepository.findAll();
@@ -28,34 +35,61 @@ public class OpponentPlayerService {
     }
 
     public OpponentPlayer createOpponentPlayer(OpponentPlayer opponentPlayer) {
-        Integer positionId = opponentPlayer.getPosition().getPos_id();
-        PlayerPosition position = positionRepository.findById(positionId)
+        Integer playerId = opponentPlayer.getPlayer().getId();
+        Player player = playerRepository.findById(playerId)
+                .orElseThrow(() -> new RuntimeException("Player not found with id " + playerId));
+        opponentPlayer.setPlayer(player);
+
+        Integer opponentId = opponentPlayer.getOpponent().getId();
+        Opponent opponent = opponentRepository.findById(opponentId)
+                .orElseThrow(() -> new RuntimeException("Opponent not found with id " + opponentId));
+        opponentPlayer.setOpponent(opponent);
+
+        Integer positionId = opponentPlayer.getPosition().getId();
+        Position position = positionRepository.findById(positionId)
                 .orElseThrow(() -> new RuntimeException("Position not found with id " + positionId));
         opponentPlayer.setPosition(position);
+
+        Long seasonId = opponentPlayer.getSeason().getId();
+        Season season = seasonRepository.findById(seasonId)
+                .orElseThrow(() -> new RuntimeException("Season not found with id " + seasonId));
+        opponentPlayer.setSeason(season);
+
         return opponentPlayerRepository.save(opponentPlayer);
     }
 
     public OpponentPlayer updateOpponentPlayer(Integer id, OpponentPlayer opponentPlayerDetails) {
         return opponentPlayerRepository.findById(id)
                 .map(opponentPlayer -> {
-                    opponentPlayer.setName(opponentPlayerDetails.getName());
-                    opponentPlayer.setBirthDate(opponentPlayerDetails.getBirthDate());
-                    opponentPlayer.setYears(opponentPlayerDetails.getYears());
-                    opponentPlayer.setNumber(opponentPlayerDetails.getNumber());
-                    opponentPlayer.setNationality(opponentPlayerDetails.getNationality());
-                    opponentPlayer.setPhoto(opponentPlayerDetails.getPhoto());
-                    Integer positionId = opponentPlayerDetails.getPosition().getPos_id();
-                    PlayerPosition position = positionRepository.findById(positionId)
+                    Integer playerId = opponentPlayerDetails.getPlayer().getId();
+                    Player player = playerRepository.findById(playerId)
+                            .orElseThrow(() -> new RuntimeException("Player not found with id " + playerId));
+                    opponentPlayer.setPlayer(player);
+
+                    Integer opponentId = opponentPlayerDetails.getOpponent().getId();
+                    Opponent opponent = opponentRepository.findById(opponentId)
+                            .orElseThrow(() -> new RuntimeException("Opponent not found with id " + opponentId));
+                    opponentPlayer.setOpponent(opponent);
+
+                    Integer positionId = opponentPlayerDetails.getPosition().getId();
+                    Position position = positionRepository.findById(positionId)
                             .orElseThrow(() -> new RuntimeException("Position not found with id " + positionId));
                     opponentPlayer.setPosition(position);
+
+                    Long seasonId = opponentPlayerDetails.getSeason().getId();
+                    Season season = seasonRepository.findById(seasonId)
+                            .orElseThrow(() -> new RuntimeException("Season not found with id " + seasonId));
+                    opponentPlayer.setSeason(season);
+
                     return opponentPlayerRepository.save(opponentPlayer);
                 })
                 .orElseThrow(() -> new RuntimeException("OpponentPlayer not found with id " + id));
     }
 
     public void deleteOpponentPlayer(Integer id) {
+        if (!opponentPlayerRepository.existsById(id)) {
+            throw new RuntimeException("OpponentPlayer not found with id " + id);
+        }
         opponentPlayerRepository.deleteById(id);
     }
 }
-
-

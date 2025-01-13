@@ -16,7 +16,7 @@ public class CompetitionController {
     private CompetitionService competitionService;
 
     @GetMapping
-    public List<Competition> getAllCompetions() {
+    public List<Competition> getAllCompetitions() {
         return competitionService.getAllCompetitions();
     }
 
@@ -33,12 +33,9 @@ public class CompetitionController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Competition> updateCompetion(@PathVariable Integer id, @RequestBody Competition competitionDetails) {
-        return competitionService.getCompetitionById(id)
-                .map(competition -> {
-                    Competition updatedCompetition = competitionService.updateCompetition(id, competitionDetails);
-                    return ResponseEntity.ok(updatedCompetition);
-                })
+    public ResponseEntity<Competition> updateCompetition(@PathVariable Integer id, @RequestBody Competition competitionDetails) {
+        return competitionService.updateCompetition(id, competitionDetails)
+                .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 

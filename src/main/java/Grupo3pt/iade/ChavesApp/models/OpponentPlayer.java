@@ -11,29 +11,22 @@ public class OpponentPlayer {
     @Column(name = "oppla_id")
     private Integer id;
 
-    @Column(name = "oppla_name", nullable = false, length = 60)
-    private String name;
+    @ManyToOne
+    @JoinColumn(name = "oppla_pla_id", nullable = false)
+    private Player player;
 
-    @Column(name = "oppla_bdate", nullable = false)
-    private String birthDate;
-
-    @Column(name = "oppla_anos", nullable = false, length = 60)
-    private String years;
-
-    @Column(name = "oppla_num", nullable = false, length = 60)
-    private String number;
-
-    @Column(name = "oppla_nac", nullable = false, length = 60)
-    private String nationality;
-
-    @Column(name = "oppla_foto", length = 200)
-    private String photo;
+    @ManyToOne
+    @JoinColumn(name = "oppla_opp_id", nullable = false)
+    private Opponent opponent;
 
     @ManyToOne
     @JoinColumn(name = "oppla_pos_id", nullable = false)
-    private PlayerPosition position;
+    private Position position;
 
-    // Getters e Setters
+    @ManyToOne
+    @JoinColumn(name = "oppla_seas_id", nullable = false)
+    private Season season;
+
     public Integer getId() {
         return id;
     }
@@ -42,61 +35,35 @@ public class OpponentPlayer {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public Player getPlayer() {
+        return player;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
-    public String getBirthDate() {
-        return birthDate;
+    public Opponent getOpponent() {
+        return opponent;
     }
 
-    public void setBirthDate(String birthDate) {
-        this.birthDate = birthDate;
+    public void setOpponent(Opponent opponent) {
+        this.opponent = opponent;
     }
 
-    public String getYears() {
-        return years;
-    }
-
-    public void setYears(String years) {
-        this.years = years;
-    }
-
-    public String getNumber() {
-        return number;
-    }
-
-    public void setNumber(String number) {
-        this.number = number;
-    }
-
-    public String getNationality() {
-        return nationality;
-    }
-
-    public void setNationality(String nationality) {
-        this.nationality = nationality;
-    }
-
-    public String getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(String photo) {
-        this.photo = photo;
-    }
-
-    public PlayerPosition getPosition() {
+    public Position getPosition() {
         return position;
     }
 
-    public void setPosition(PlayerPosition position) {
+    public void setPosition(Position position) {
         this.position = position;
     }
+
+    public Season getSeason() {
+        return season;
+    }
+
+    public void setSeason(Season season) {
+        this.season = season;
+    }
 }
-
-

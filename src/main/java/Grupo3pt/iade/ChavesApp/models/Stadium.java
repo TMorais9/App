@@ -52,4 +52,3 @@ public class Stadium {
         this.photo = photo;
     }
 }
-

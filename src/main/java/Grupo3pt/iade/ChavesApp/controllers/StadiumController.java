@@ -35,10 +35,7 @@ public class StadiumController {
     @PutMapping("/{id}")
     public ResponseEntity<Stadium> updateStadium(@PathVariable Integer id, @RequestBody Stadium stadiumDetails) {
         return stadiumService.getStadiumById(id)
-                .map(stadium -> {
-                    Stadium updatedStadium = stadiumService.updateStadium(id, stadiumDetails);
-                    return ResponseEntity.ok(updatedStadium);
-                })
+                .map(stadium -> ResponseEntity.ok(stadiumService.updateStadium(id, stadiumDetails)))
                 .orElse(ResponseEntity.notFound().build());
     }
 
@@ -51,4 +48,3 @@ public class StadiumController {
         return ResponseEntity.notFound().build();
     }
 }
-

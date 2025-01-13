@@ -1,9 +1,7 @@
 package Grupo3pt.iade.ChavesApp.services;
 
 import Grupo3pt.iade.ChavesApp.models.Player;
-import Grupo3pt.iade.ChavesApp.models.PlayerPosition;
 import Grupo3pt.iade.ChavesApp.repositories.PlayerRepository;
-import Grupo3pt.iade.ChavesApp.repositories.PlayerPositionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,9 +14,6 @@ public class PlayerService {
     @Autowired
     private PlayerRepository playerRepository;
 
-    @Autowired
-    private PlayerPositionRepository positionRepository;
-
     public List<Player> getAllPlayers() {
         return playerRepository.findAll();
     }
@@ -28,10 +23,6 @@ public class PlayerService {
     }
 
     public Player createPlayer(Player player) {
-        Integer positionId = player.getPosition().getPos_id();
-        PlayerPosition position = positionRepository.findById(positionId)
-                .orElseThrow(() -> new RuntimeException("Position not found with id " + positionId));
-        player.setPosition(position);
         return playerRepository.save(player);
     }
 
@@ -44,17 +35,15 @@ public class PlayerService {
                     player.setNumber(playerDetails.getNumber());
                     player.setNationality(playerDetails.getNationality());
                     player.setPhoto(playerDetails.getPhoto());
-                    Integer positionId = playerDetails.getPosition().getPos_id();
-                    PlayerPosition position = positionRepository.findById(positionId)
-                            .orElseThrow(() -> new RuntimeException("Position not found with id " + positionId));
-                    player.setPosition(position);
                     return playerRepository.save(player);
                 })
                 .orElseThrow(() -> new RuntimeException("Player not found with id " + id));
     }
 
     public void deletePlayer(Integer id) {
+        if (!playerRepository.existsById(id)) {
+            throw new RuntimeException("Player not found with id " + id);
+        }
         playerRepository.deleteById(id);
     }
 }
-

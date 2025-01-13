@@ -1,11 +1,9 @@
 package Grupo3pt.iade.ChavesApp.repositories;
 
-import Grupo3pt.iade.ChavesApp.models.PlayerPosition;
+import Grupo3pt.iade.ChavesApp.models.Position;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PlayerPositionRepository extends JpaRepository<PlayerPosition, Integer> {
+public interface PositionRepository extends JpaRepository<Position, Integer> {
 }
-
-

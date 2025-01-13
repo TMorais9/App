@@ -1,11 +1,7 @@
 package Grupo3pt.iade.ChavesApp.services;
 
-import Grupo3pt.iade.ChavesApp.models.Game;
-import Grupo3pt.iade.ChavesApp.models.Team;
-import Grupo3pt.iade.ChavesApp.models.OpponentTeam;
-import Grupo3pt.iade.ChavesApp.repositories.GameRepository;
-import Grupo3pt.iade.ChavesApp.repositories.TeamRepository;
-import Grupo3pt.iade.ChavesApp.repositories.OpponentTeamRepository;
+import Grupo3pt.iade.ChavesApp.models.*;
+import Grupo3pt.iade.ChavesApp.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,58 +15,79 @@ public class GameService {
     private GameRepository gameRepository;
 
     @Autowired
-    private TeamRepository teamRepository;
+    private StadiumRepository stadiumRepository;
 
     @Autowired
-    private OpponentTeamRepository opponentTeamRepository;
+    private CompetitionRepository competitionRepository;
+
+    @Autowired
+    private OpponentRepository opponentRepository;
 
     public List<Game> getAllGames() {
         return gameRepository.findAll();
     }
 
-    public Optional<Game> getGameById(Long id) {
+    public Optional<Game> getGameById(Integer id) {
         return gameRepository.findById(id);
     }
 
     public Game createGame(Game game) {
-        Long teamId = game.getTeam().getId();
-        Team team = teamRepository.findById(teamId)
-                .orElseThrow(() -> new RuntimeException("Team not found with id " + teamId));
-        game.setTeam(team);
+        if (game.getStadium() != null) {
+            Integer stadiumId = game.getStadium().getId();
+            Stadium stadium = stadiumRepository.findById(stadiumId)
+                    .orElseThrow(() -> new RuntimeException("Stadium not found with id " + stadiumId));
+            game.setStadium(stadium);
+        }
 
-        Long opponentTeamId = game.getOpponentTeam().getId();
-        OpponentTeam opponentTeam = opponentTeamRepository.findById(opponentTeamId)
-                .orElseThrow(() -> new RuntimeException("OpponentTeam not found with id " + opponentTeamId));
-        game.setOpponentTeam(opponentTeam);
+        Integer competitionId = game.getCompetition().getId();
+        Competition competition = competitionRepository.findById(competitionId)
+                .orElseThrow(() -> new RuntimeException("Competition not found with id " + competitionId));
+        game.setCompetition(competition);
+
+        if (game.getOpponent() != null) {
+            Integer opponentId = game.getOpponent().getId();
+            Opponent opponent = opponentRepository.findById(opponentId)
+                    .orElseThrow(() -> new RuntimeException("Opponent not found with id " + opponentId));
+            game.setOpponent(opponent);
+        }
 
         return gameRepository.save(game);
     }
 
-    public Game updateGame(Long id, Game gameDetails) {
+    public Game updateGame(Integer id, Game gameDetails) {
         return gameRepository.findById(id)
                 .map(game -> {
                     game.setName(gameDetails.getName());
                     game.setDate(gameDetails.getDate());
 
-                    Long teamId = gameDetails.getTeam().getId();
-                    Team team = teamRepository.findById(teamId)
-                            .orElseThrow(() -> new RuntimeException("Team not found with id " + teamId));
-                    game.setTeam(team);
+                    if (gameDetails.getStadium() != null) {
+                        Integer stadiumId = gameDetails.getStadium().getId();
+                        Stadium stadium = stadiumRepository.findById(stadiumId)
+                                .orElseThrow(() -> new RuntimeException("Stadium not found with id " + stadiumId));
+                        game.setStadium(stadium);
+                    }
 
-                    Long opponentTeamId = gameDetails.getOpponentTeam().getId();
-                    OpponentTeam opponentTeam = opponentTeamRepository.findById(opponentTeamId)
-                            .orElseThrow(() -> new RuntimeException("OpponentTeam not found with id " + opponentTeamId));
-                    game.setOpponentTeam(opponentTeam);
+                    Integer competitionId = gameDetails.getCompetition().getId();
+                    Competition competition = competitionRepository.findById(competitionId)
+                            .orElseThrow(() -> new RuntimeException("Competition not found with id " + competitionId));
+                    game.setCompetition(competition);
+
+                    if (gameDetails.getOpponent() != null) {
+                        Integer opponentId = gameDetails.getOpponent().getId();
+                        Opponent opponent = opponentRepository.findById(opponentId)
+                                .orElseThrow(() -> new RuntimeException("Opponent not found with id " + opponentId));
+                        game.setOpponent(opponent);
+                    }
 
                     return gameRepository.save(game);
                 })
                 .orElseThrow(() -> new RuntimeException("Game not found with id " + id));
     }
 
-    public void deleteGame(Long id) {
+    public void deleteGame(Integer id) {
+        if (!gameRepository.existsById(id)) {
+            throw new RuntimeException("Game not found with id " + id);
+        }
         gameRepository.deleteById(id);
     }
 }
-
-
-

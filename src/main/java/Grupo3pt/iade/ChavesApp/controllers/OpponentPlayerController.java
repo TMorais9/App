@@ -35,10 +35,7 @@ public class OpponentPlayerController {
     @PutMapping("/{id}")
     public ResponseEntity<OpponentPlayer> updateOpponentPlayer(@PathVariable Integer id, @RequestBody OpponentPlayer opponentPlayerDetails) {
         return opponentPlayerService.getOpponentPlayerById(id)
-                .map(opponentPlayer -> {
-                    OpponentPlayer updatedOpponentPlayer = opponentPlayerService.updateOpponentPlayer(id, opponentPlayerDetails);
-                    return ResponseEntity.ok(updatedOpponentPlayer);
-                })
+                .map(opponentPlayer -> ResponseEntity.ok(opponentPlayerService.updateOpponentPlayer(id, opponentPlayerDetails)))
                 .orElse(ResponseEntity.notFound().build());
     }
 
@@ -51,4 +48,3 @@ public class OpponentPlayerController {
         return ResponseEntity.notFound().build();
     }
 }
-

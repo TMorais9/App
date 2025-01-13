@@ -11,10 +11,8 @@ import java.util.Optional;
 @Service
 public class SeasonService {
 
-
     @Autowired
     private SeasonRepository seasonRepository;
-
 
     public List<Season> getAllSeasons() {
         return seasonRepository.findAll();
@@ -28,18 +26,17 @@ public class SeasonService {
         return seasonRepository.save(season);
     }
 
-    
     public Season updateSeason(Long id, Season seasonDetails) {
         return seasonRepository.findById(id)
-            .map(season -> {
-                season.setName(seasonDetails.getName());
-                season.setYear(seasonDetails.getYear());
-                return seasonRepository.save(season);
-            })
-            .orElseThrow(() -> new RuntimeException("Season not found with id " + id));
+                .map(season -> {
+                    season.setName(seasonDetails.getName());
+                    season.setStartDate(seasonDetails.getStartDate());
+                    season.setEndDate(seasonDetails.getEndDate());
+                    return seasonRepository.save(season);
+                })
+                .orElseThrow(() -> new RuntimeException("Season not found with id " + id));
     }
 
-    
     public void deleteSeason(Long id) {
         if (seasonRepository.existsById(id)) {
             seasonRepository.deleteById(id);

@@ -38,7 +38,9 @@ public class StadiumService {
     }
 
     public void deleteStadium(Integer id) {
+        if (!stadiumRepository.existsById(id)) {
+            throw new RuntimeException("Stadium not found with id " + id);
+        }
         stadiumRepository.deleteById(id);
     }
 }
-

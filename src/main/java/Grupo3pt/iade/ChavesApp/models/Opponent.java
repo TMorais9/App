@@ -3,15 +3,15 @@ package Grupo3pt.iade.ChavesApp.models;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "competition")
-public class Competition {
+@Table(name = "opponent")
+public class Opponent {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "comp_id")
+    @Column(name = "opp_id")
     private Integer id;
 
-    @Column(name = "comp_name", nullable = false, length = 60)
+    @Column(name = "opp_name", nullable = false, length = 60)
     private String name;
 
     public Integer getId() {

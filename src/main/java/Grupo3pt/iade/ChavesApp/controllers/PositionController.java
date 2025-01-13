@@ -1,7 +1,7 @@
 package Grupo3pt.iade.ChavesApp.controllers;
 
-import Grupo3pt.iade.ChavesApp.models.PlayerPosition;
-import Grupo3pt.iade.ChavesApp.services.PlayerPositionService;
+import Grupo3pt.iade.ChavesApp.models.Position;
+import Grupo3pt.iade.ChavesApp.services.PositionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,34 +9,34 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/positions")
-public class PlayerPositionController {
+@RequestMapping("/positions") 
+public class PositionController {
 
     @Autowired
-    private PlayerPositionService positionService;
+    private PositionService positionService;
 
     @GetMapping
-    public List<PlayerPosition> getAllPositions() {
+    public List<Position> getAllPositions() {
         return positionService.getAllPositions();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PlayerPosition> getPositionById(@PathVariable Integer id) {
+    public ResponseEntity<Position> getPositionById(@PathVariable Integer id) {
         return positionService.getPositionById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public PlayerPosition createPosition(@RequestBody PlayerPosition position) {
+    public Position createPosition(@RequestBody Position position) {
         return positionService.createPosition(position);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PlayerPosition> updatePosition(@PathVariable Integer id, @RequestBody PlayerPosition positionDetails) {
+    public ResponseEntity<Position> updatePosition(@PathVariable Integer id, @RequestBody Position positionDetails) {
         return positionService.getPositionById(id)
                 .map(position -> {
-                    PlayerPosition updatedPosition = positionService.updatePosition(id, positionDetails);
+                    Position updatedPosition = positionService.updatePosition(id, positionDetails);
                     return ResponseEntity.ok(updatedPosition);
                 })
                 .orElse(ResponseEntity.notFound().build());
@@ -51,6 +51,3 @@ public class PlayerPositionController {
         return ResponseEntity.notFound().build();
     }
 }
-
-
-

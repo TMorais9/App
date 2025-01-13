@@ -1,9 +1,9 @@
 package Grupo3pt.iade.ChavesApp.repositories;
 
-import Grupo3pt.iade.ChavesApp.models.OpponentTeam;
+import Grupo3pt.iade.ChavesApp.models.Opponent;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface OpponentTeamRepository extends JpaRepository<OpponentTeam, Long> {
+public interface OpponentRepository extends JpaRepository<Opponent, Integer> {
 }
