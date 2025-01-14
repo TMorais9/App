@@ -1,0 +1,110 @@
+# Relatório Final
+
+## Feito por:
+- Miguel Dias Nº20231292
+- Tiago Morais Nº20230815
+
+### Links do repositório:
+- [Repositório do Projeto](https://github.com/TMorais9/App)
+
+---
+
+## Problema e Resolução do Mesmo
+
+O nosso grupo decidiu desenvolver a **App GD Chaves** para facilitar o acesso e interação com o clube aos adeptos.
+
+- **Problema identificado**: O site oficial do clube é pouco apelativo e possui informações limitadas sobre o GD Chaves.
+- **Solução proposta**: Criar uma aplicação que:
+  - Ofereça melhor acesso à tabela classificativa.
+  - Facilite compras online (sem necessidade de visitar a loja física).
+  - Disponibilize informações detalhadas sobre os jogos.
+  - Permita a renovação de quotas de sócio.
+
+**Motivação**: Atender a um público idoso, que constitui uma grande parte da base de adeptos do clube, de forma mais acessível.
+
+---
+
+## Descrição dos Objetivos e Motivação
+
+### Objetivo principal:
+Facilitar a proximidade dos adeptos ao GD Chaves, permitindo que acompanhem o clube de forma prática e eficiente.
+
+### Razões para o projeto:
+- Desenvolver uma solução tecnológica para um clube com o qual temos ligação pessoal.
+- Promover maior interação entre o clube e seus adeptos.
+
+### Benefícios:
+- Acesso facilitado a:
+  - Jogos disputados e por disputar.
+  - Produtos personalizados do clube.
+- Design simplificado e acessível para todas as idades.
+
+---
+
+## Identificação do Público-Alvo
+
+O público-alvo principal são as **pessoas idosas**, considerando a demografia local. Porém, a aplicação é adaptada para **adeptos de todas as idades**.
+
+---
+
+## Pesquisa de Mercado
+
+- Apenas uma aplicação modelo foi utilizada como referência, devido à escassez no mercado.
+- A app do **Benfica** serviu como inspiração para criar algo interativo e simples, mas distinto.
+
+---
+
+## Soluções
+
+### Descrição
+- Desenvolvimento de uma aplicação simples e funcional com foco nas necessidades dos adeptos.
+
+### Enquadramento nas Unidades Curriculares:
+1. **Base de Dados**:
+   - Aprendizado sobre BackEnd e desenvolvimento de **creates** e **inserts** necessários.
+2. **Programação Orientada a Objetos**:
+   - Desenvolvimento da API utilizando **Java** e **Spring Boot**.
+3. **Programação de Dispositivos Móveis**:
+   - Utilização do **Android Studio** para o FrontEnd.
+4. **Projeto de Desenvolvimento Móvel**:
+   - Gestão de tarefas e simulação do ambiente de trabalho.
+5. **Matemática Discreta**:
+   - Análise de dados como posse de bola e remates.
+6. **Competências Comunicacionais**:
+   - Melhorias no design e apresentações visuais.
+
+---
+
+## Tecnologias Utilizadas
+
+- **Base de Dados**: DataGrip, MySQL.
+- **API**: VSCode, Spring Boot.
+- **FrontEnd**: Android Studio.
+
+---
+
+## Diagramas e Documentação
+
+- [Versão atualizada do diagrama de classes](https://github.com/TMorais9/App)
+- [Versão atualizada do Dicionário de Dados](https://github.com/TMorais9/App/blob/main/Base%20de%20Dados/Relato%CC%81rio%20Base%20de%20Dados%20Chaves.pdf)
+- [Guia de Dados](https://github.com/TMorais9/App/blob/main/Base%20de%20Dados/Relato%CC%81rio%20Base%20de%20Dados%20Chaves.pdf)
+- [Documentação REST](https://github.com/TMorais9/App)
+- [Manual do Utilizador](https://github.com/TMorais9/App/blob/main/Base%20de%20Dados/Relato%CC%81rio%20Base%20de%20Dados%20Chaves.pdf)
+
+---
+
+## Gráfico de Gantt
+
+
+---
+
+## Auto-avaliação
+
+
+---
+
+## Bibliografia
+
+- [GD Chaves - ZeroZero](https://www.zerozero.pt/equipa/gd-chaves/20?epoca_id=154)
+- [GD Chaves - Site Oficial](https://gdchaves.pt/)
+- [Flashscore](https://www.flashscore.pt/h2h/futebol/chaves-vsToxqA5/pacos-ferreira-hxT1f5xa/#/home)
