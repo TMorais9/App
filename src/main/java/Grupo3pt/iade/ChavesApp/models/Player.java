@@ -1,54 +1,89 @@
 package Grupo3pt.iade.ChavesApp.models;
 
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import java.util.Date;
 
 @Entity
-@Table(name = "players")
+@Table(name = "player")
 public class Player {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    
-    @Column(nullable = false)
+    @Column(name = "pla_id")
+    private Integer id;
+
+    @Column(name = "pla_name", nullable = false, length = 60)
     private String name;
 
-    @Column
-    private Integer jerseyNumber;
+    @Column(name = "pla_bdate", nullable = false)
+    @Temporal(TemporalType.DATE)
+    private Date birthDate;
 
-    
-    @ManyToOne
-    @JoinColumn(name ="team_id")
-    private Team team;
-    
-    public int getId(){
+    @Column(name = "pla_anos", nullable = false, length = 60)
+    private String years;
+
+    @Column(name = "pla_num", nullable = false, length = 60)
+    private String number;
+
+    @Column(name = "pla_nac", nullable = false, length = 60)
+    private String nationality;
+
+    @Column(name = "pla_foto", length = 200)
+    private String photo;
+
+    public Integer getId() {
         return id;
     }
 
-    public String getName(){
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
         return name;
     }
 
-    public void setName(String name){
-       this.name = name;
-        
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Integer getJerseyNumber(){
-        return jerseyNumber;
+    public Date getBirthDate() {
+        return birthDate;
     }
 
-    public void setJerseyNumber(Integer jerseyNumber){
-       this.jerseyNumber = jerseyNumber;
-        
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
     }
 
+    public String getYears() {
+        return years;
+    }
+
+    public void setYears(String years) {
+        this.years = years;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public String getNationality() {
+        return nationality;
+    }
+
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
 }
