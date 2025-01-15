@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.GDChaves" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">#001E62</item>
+        <item name="android:windowIsTranslucent">false</item>
+    </style>
+
+</resources>
